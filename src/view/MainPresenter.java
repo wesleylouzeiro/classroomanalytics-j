@@ -5,7 +5,7 @@
  */
 package view;
 
-import controller.ConversaAnalitics;
+import controller.ConversaAnaliticsControllher;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,7 +19,7 @@ import java.io.IOException;
 public class MainPresenter {
     
     private final IDashboard dashboard;
-    private final ConversaAnalitics conversaAnaliticsControl = new ConversaAnalitics();
+    private final ConversaAnaliticsControllher conversaAnaliticsControl = new ConversaAnaliticsControllher();
     
     public MainPresenter(IDashboard dashboard){
         this.dashboard = dashboard;
@@ -27,7 +27,6 @@ public class MainPresenter {
     
     public void processarDadosDoArquivo(File arquivo) throws FileNotFoundException, IOException{
         String texto = conversaAnaliticsControl.processarTexto(arquivo);
-        System.out.println("texto "+texto);
         
         this.dashboard.atualizarCampoEditor(texto);
     }

@@ -7,18 +7,21 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import repository.FileDataAccess;
 import usercase.ProcessadorConversa;
 
 /**
  *
  * @author Dev
  */
-public class ConversaAnalitics {
+public class ConversaAnaliticsControllher {
     
     
     public String processarTexto(File file) throws IOException{
-        ProcessadorConversa processador = new ProcessadorConversa();        
-        return processador.extrairTexto(file);
+        //ProcessadorConversa processador = new ProcessadorConversa();  
+        FileDataAccess fileDA = new FileDataAccess();
+        String conversa = fileDA.extrairTexto(file);
+        return conversa;//processador.extrairTexto(file);
     }
     
 }
