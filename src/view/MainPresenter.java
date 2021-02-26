@@ -5,6 +5,7 @@
  */
 package view;
 
+import controller.ConversaAnalitics;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -18,27 +19,15 @@ import java.io.IOException;
 public class MainPresenter {
     
     private final IDashboard dashboard;
+    private final ConversaAnalitics conversaAnaliticsControl = new ConversaAnalitics();
     
     public MainPresenter(IDashboard dashboard){
         this.dashboard = dashboard;
     }
     
     public void processarDadosDoArquivo(File arquivo) throws FileNotFoundException, IOException{
-        String texto = "testo a ser atualizado";
-        BufferedReader buffRead = new BufferedReader(new FileReader(arquivo));
-        String linha = "";
-        while (true) {
-            if (linha != null) {
-//                if(EsLinhaDeBase(linha)){
-//                    listaDeMapas.add(linha);
-//                }
-                texto += linha+"\r\n";
-            } else
-                break;
-            linha = buffRead.readLine();
-        }
-        
-        buffRead.close();
+        String texto = conversaAnaliticsControl.processarTexto(arquivo);
+        System.out.println("texto "+texto);
         
         this.dashboard.atualizarCampoEditor(texto);
     }
