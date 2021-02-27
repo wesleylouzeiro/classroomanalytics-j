@@ -23,6 +23,7 @@ public class ProcessadorConversaTest {
 
     final ProcessadorConversa processadorDeConversas = new ProcessadorConversa();
     final Conversas conversas = new Conversas();
+    UltilitarioMenssagem UltilMsg = new UltilitarioMenssagem();
 
     public ProcessadorConversaTest() {
     }
@@ -73,7 +74,7 @@ public class ProcessadorConversaTest {
     public void testEsUmaMenssagemDeConversa() {
         System.out.println("* testExtrairConversas: esUmaMenssagemDeConversa");
         String menssagem = conversas.MENSSAGEM_COMPLETA;
-        boolean result = processadorDeConversas.esUmaMenssagemDeConversa(menssagem);
+        boolean result = UltilMsg.esUmaMenssagemDeConversa(menssagem);
         assertTrue(result);
     }
 

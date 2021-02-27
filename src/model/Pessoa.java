@@ -62,6 +62,21 @@ public class Pessoa {
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
     }
+
+    
+    @Override
+    public boolean equals(Object obj) {        
+        if(obj!=null && obj instanceof Pessoa){
+            Pessoa pessoa = (Pessoa) obj;
+            return (pessoa.contato.equals(this.contato) && pessoa.nome.equals(this.nome));
+        }        
+        return false;
+    }
+    
+    @Override
+    public String toString() {
+        return this.contato;
+    }
     
     
     
