@@ -5,25 +5,31 @@
  */
 package usercase;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
  * @author Dev
  */
 public class ProcessadorConversaTest {
-    
+
+    final ProcessadorConversa processadorDeConversas = new ProcessadorConversa();
+    final Conversas conversas = new Conversas();
+
     public ProcessadorConversaTest() {
     }
-    
-    @BeforeAll
+
+    @BeforeClass
     public static void setUpClass() {
     }
-    
-    @AfterAll
+
+    @AfterClass
     public static void tearDownClass() {
     }
 
@@ -31,15 +37,42 @@ public class ProcessadorConversaTest {
      * Test of corrigirConversas method, of class ProcessadorConversa.
      */
     @Test
-    public void testCorrigirConversas() {
-        System.out.println("corrigirConversas");
-        String conversa = "";
-        ProcessadorConversa instance = new ProcessadorConversa();
-        String expResult = "";
-        String result = instance.corrigirConversas(conversa);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+    public void testExtrairConversas() {
+        System.out.println("* testExtrairConversas: extrairConversas");
+        Conversa conversaIncompleta = conversas.comMenssagemImcompletaNoFim();
+        String conversa = conversaIncompleta.toString();
+        List<String> result = processadorDeConversas.extrairConversas(conversa);
+        assertEquals(conversaIncompleta.size(), result.size());
+        for (int index = 0; index < result.size(); index++) {
+            assertEquals(conversaIncompleta.getListaEsperada().get(index), result.get(index));
+        }
     }
-    
+
+    /**
+     * Test of corrigirConversas method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testMultiplosExtrairConversas() {
+        System.out.println("* testExtrairConversas: testMultiplosExtrairConversas");
+        conversas.getTodasConversas().forEach((conversaIncompleta) -> {
+            String conversa = conversaIncompleta.toString();
+            List<String> result = processadorDeConversas.extrairConversas(conversa);
+            assertEquals(conversaIncompleta.size(), result.size());
+            for (int index = 0; index < result.size(); index++) {
+                assertEquals(conversaIncompleta.getListaEsperada().get(index), result.get(index));
+            }
+        });
+    }
+
+    /**
+     * Test of esUmaMenssagemDeConversa method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testEsUmaMenssagemDeConversa() {
+        System.out.println("* testExtrairConversas: esUmaMenssagemDeConversa");
+        String menssagem = conversas.MENSSAGEM_COMPLETA;
+        boolean result = processadorDeConversas.esUmaMenssagemDeConversa(menssagem);
+        assertTrue(result);
+    }
+
 }
