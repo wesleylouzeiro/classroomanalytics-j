@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usercase;
+package util;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -17,10 +17,11 @@ import java.util.List;
 public class Conversas {
     
     
-    final String MENSSAGEM_COMPLETA="11/02/2021 16:30 - João Silva: Essa é uma menssagem completa.";
-    final String MENSSAGEM_IMCOMPLETA="11/02/2021 16:31 - João Silva: Essa messagem esta imcompleta pois...";
-    final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
+    public final String MENSSAGEM_COMPLETA="11/02/2021 16:30 - João Silva: Essa é uma menssagem completa.";
+    public final String MENSSAGEM_IMCOMPLETA="11/02/2021 16:31 - João Silva: Essa messagem esta imcompleta pois...";
+    public final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
     
+      
     
         
     public Conversa comMenssagemCompleta(){
@@ -74,6 +75,15 @@ public class Conversas {
         todasConversas.add(this.comMenssagemImcompletaMultipos());
         todasConversas.add(this.comComplementosDeMenssagens());
         return todasConversas;
+    }
+    
+    public Conversa comMenssagemSuja(){
+        String[] conversaComMenssagensImcompletasBruta = {
+            "   "+MENSSAGEM_COMPLETA,
+            MENSSAGEM_IMCOMPLETA+"\n\n\n\n",
+            "\t"+COMPLEMENTO_MENSSAGEM};//,MENSSAGEM_COMPLETA};
+        String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM};//,MENSSAGEM_COMPLETA};
+        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }
     
     

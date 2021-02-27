@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package usercase;
+package util;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,6 +30,10 @@ public class Conversa {
     
     public int size(){
         return this.listaConversaEsperada.length;
+    }
+    
+    public List<String> getLista(){
+        return Arrays.asList(this.listaConversa);
     }
     
     public List<String> getListaEsperada(){

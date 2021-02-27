@@ -18,10 +18,14 @@ public class ConversaAnaliticsControllher {
     
     
     public String processarTexto(File file) throws IOException{
-        //ProcessadorConversa processador = new ProcessadorConversa();  
+        ProcessadorConversa processador = new ProcessadorConversa();  
         FileDataAccess fileDA = new FileDataAccess();
         String conversa = fileDA.extrairTexto(file);
-        return conversa;//processador.extrairTexto(file);
+        conversa = fileDA.limparTexto(conversa);
+        System.out.println("conversa: "+conversa);
+        System.out.println("processador.extrairConversas(conversa).size(): "+processador.extrairConversas(conversa).size());
+        String resultado = processador.extrairConversas(conversa).stream().reduce("", (textoConversa,menssagem)->textoConversa+"\n"+menssagem);
+        return resultado;//conversa;//processador.extrairTexto(file);
     }
     
 }

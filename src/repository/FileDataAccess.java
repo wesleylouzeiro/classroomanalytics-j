@@ -26,11 +26,18 @@ public class FileDataAccess {
                 break;
             }            
             texto.append(linha);                
-            texto.append("\r\n");         
+            texto.append("\n");         
             linha = buffRead.readLine();
         }        
         buffRead.close();
         return texto.toString();
     }
     
+    public String limparTexto(String textoSujo){
+        String textoLimpo = textoSujo.trim();
+        textoLimpo = textoLimpo.replaceAll("\t", "");
+        textoLimpo = textoLimpo.replaceAll("\n*\n", "\n");        
+        return textoLimpo;
+    }
+      
 }

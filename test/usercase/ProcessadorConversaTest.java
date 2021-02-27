@@ -5,6 +5,8 @@
  */
 package usercase;
 
+import util.Conversa;
+import util.Conversas;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
