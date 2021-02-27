@@ -7,6 +7,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  *
@@ -71,6 +72,14 @@ public class Pessoa {
             return (pessoa.contato.equals(this.contato) && pessoa.nome.equals(this.nome));
         }        
         return false;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 71 * hash + Objects.hashCode(this.nome);
+        hash = 71 * hash + Objects.hashCode(this.contato);
+        return hash;
     }
     
     @Override

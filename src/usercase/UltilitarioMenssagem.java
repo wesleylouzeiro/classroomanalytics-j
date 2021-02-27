@@ -6,6 +6,8 @@
 package usercase;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.regex.Pattern;
 import model.Menssagem;
 import model.Pessoa;
@@ -34,11 +36,12 @@ public class UltilitarioMenssagem {
         return new Pessoa(contato, contato);
     }
     
-    public Menssagem estrairMenssagem(String menssagem){
-        String dataString = extrairComponenteMenssagem(menssagem)[DATA]
-                +"-"+extrairComponenteMenssagem(menssagem)[HORA];
-        
-        return null;
+    public Menssagem extrairMenssagem(String menssagem){        
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy"); 
+        LocalDate data = LocalDate.parse(extrairComponenteMenssagem(menssagem)[DATA], formato);
+        LocalTime hora = LocalTime.parse(extrairComponenteMenssagem(menssagem)[HORA]+":00");
+        String texto = extrairComponenteMenssagem(menssagem)[MENSSAGEM];
+        return new Menssagem(data,hora,texto);
     }
     
 
@@ -52,5 +55,7 @@ public class UltilitarioMenssagem {
         }        
         return menssagemComponente;
     }
+    
+    
 
 }

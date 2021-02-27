@@ -5,6 +5,8 @@
  */
 package util;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,7 +20,9 @@ public class Conversas {
     
     public final String CONTATO_JOAO_SILVA="João Silva";
     public final String DATA_11_02_21="11/02/2021";
+    public final LocalDate DATE_11_02_21=LocalDate.of(2021, 02, 11);
     public final String HORAS_16_30="16:30";
+    public final LocalTime TIME_16_30=LocalTime.of(16, 30, 00);
     public final String TEXTO_MENSSAGEM="Essa é uma menssagem completa.";
     
     public final String MENSSAGEM_COMPLETA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
