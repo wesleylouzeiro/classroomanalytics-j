@@ -22,10 +22,10 @@ public class ConversaAnaliticsControllher {
         FileDataAccess fileDA = new FileDataAccess();
         String conversa = fileDA.extrairTexto(file);
         conversa = fileDA.limparTexto(conversa);
-        System.out.println("conversa: "+conversa);
-        System.out.println("processador.extrairConversas(conversa).size(): "+processador.extrairConversas(conversa).size());
+//        System.out.println("conversa: "+conversa);
+//        System.out.println("processador.extrairConversas(conversa).size(): "+processador.extrairConversas(conversa).size());
         String resultado = processador.extrairConversas(conversa).stream().reduce("", (textoConversa,menssagem)->textoConversa+"\n"+menssagem);
-        return resultado;//conversa;//processador.extrairTexto(file);
+        return resultado;
     }
     
 }
