@@ -34,7 +34,12 @@ public class UltilitarioMenssagem {
         return new Pessoa(contato, contato);
     }
     
-    
+    public Menssagem estrairMenssagem(String menssagem){
+        String dataString = extrairComponenteMenssagem(menssagem)[DATA]
+                +"-"+extrairComponenteMenssagem(menssagem)[HORA];
+        
+        return null;
+    }
     
 
     public String[] extrairComponenteMenssagem(String menssagem) {

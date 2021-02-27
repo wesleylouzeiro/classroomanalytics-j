@@ -7,25 +7,28 @@ package model;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  *
  * @author Dev
  */
 public class Menssagem {
-    private final LocalDateTime data;
+    private final LocalDate data;
+    private final LocalTime time;
     private final String menssagens;
     
     
-    public Menssagem(LocalDateTime data, String menssagens) {
+    public Menssagem(LocalDate data, LocalTime time, String menssagens) {
         this.data = data;
+        this.time = time;
         this.menssagens = menssagens;
     }
 
     /**
      * @return the data
      */
-    public LocalDateTime getData() {
+    public LocalDate getData() {
         return data;
     }
 
@@ -34,5 +37,12 @@ public class Menssagem {
      */
     public String getMenssagens() {
         return menssagens;
+    }
+
+    /**
+     * @return the time
+     */
+    public LocalTime getTime() {
+        return time;
     }
 }
