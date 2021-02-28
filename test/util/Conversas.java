@@ -32,6 +32,11 @@ public class Conversas {
     public final String MENSSAGEM_IMCOMPLETA="11/02/2021 16:31 - João Silva: Essa messagem esta imcompleta pois...";
     public final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
     
+    public final String ICORRETA_MENSSAGEM_SEM_DATA=HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
+    public final String ICORRETA_MENSSAGEM_SEM_HORA=DATA_11_02_21+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
+    public final String ICORRETA_MENSSAGEM_SEM_CONTATO=DATA_11_02_21+" "+HORAS_16_30+" - "+TEXTO_MENSSAGEM;
+    
+    
       
     public HashMap<String, Pessoa> estruturaDeDadosDaConversaComMenssagemCompleta(){
         Pessoa pessoaJoao = new Pessoa(CONTATO_JOAO_SILVA,CONTATO_JOAO_SILVA);

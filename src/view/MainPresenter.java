@@ -11,6 +11,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Map;
+import model.Pessoa;
 
 /**
  *
@@ -18,6 +20,7 @@ import java.io.IOException;
  */
 public class MainPresenter {
     
+    private String textoDeArquivoAtual = "";    
     private final IDashboard dashboard;
     private final ConversaAnaliticsControllher conversaAnaliticsControl = new ConversaAnaliticsControllher();
     
@@ -26,13 +29,25 @@ public class MainPresenter {
     }
     
     public void processarDadosDoArquivo(File arquivo) throws FileNotFoundException, IOException{
-        String texto = conversaAnaliticsControl.processarTexto(arquivo);
+        textoDeArquivoAtual = conversaAnaliticsControl.processarArquivoDeTexto(arquivo);
         
-        this.dashboard.atualizarCampoEditor(texto);
+        this.dashboard.atualizarCampoEditor(textoDeArquivoAtual);
     }
     
     public boolean esUmArquivoValido(File arquivoSelecionado){
         return arquivoSelecionado!=null && arquivoSelecionado.isFile() && !arquivoSelecionado.getName().equals("");
+    }
+    
+    public void atualizarTabelaDeContato(String data){
+        //String texto = conversaAnaliticsControl.processarArquivoDeTexto(file);
+        Map<String, Pessoa> mapaPessoa = conversaAnaliticsControl.gerarListaContatos(textoDeArquivoAtual);
+        Object [][] matrizDados = new Object [][] {
+                {"João", "12", "", null},
+                {"Maria", "22", null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            };
+        this.dashboard.atualizarTabelaEstatisticaContatos(matrizDados);
     }
     
 }
