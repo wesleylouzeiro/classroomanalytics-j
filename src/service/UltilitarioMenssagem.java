@@ -24,10 +24,12 @@ public class UltilitarioMenssagem {
     private final int MENSSAGEM=3;
 
     //11/02/2021 16:30 - João Silva: Essa...    
-    private final String dataTimeRegex = "[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}\\s[0-9]{2}:[0-9]{2}\\s-\\s";
+    private final String dataTimeRegex = "[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}\\s[0-9]{2}:[0-9]{2}\\s";
+    private final String contatoRegex = "-\\s.*:\\s";
+    
 
     public boolean esUmaMenssagemDeConversa(String menssagem) {
-        return Pattern.matches(dataTimeRegex + ".*", menssagem);
+        return Pattern.matches(dataTimeRegex +contatoRegex+".*", menssagem);
     }
     
     public String extrairNomeContato(String menssagem){
