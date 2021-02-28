@@ -12,18 +12,18 @@ import java.util.List;
  *
  * @author Dev
  */
-public class ConversaTest {
+public class ConversaT {
 
     private final String[] listaConversa;
     private final String[] listaConversaEsperada;
     
 
-    public ConversaTest(String[] listaConversa) {
+    public ConversaT(String[] listaConversa) {
         this.listaConversa = listaConversa;
         this.listaConversaEsperada = listaConversa;
     }
     
-    public ConversaTest(String[] listaConversa, String[] listaConversaEsperada) {
+    public ConversaT(String[] listaConversa, String[] listaConversaEsperada) {
         this.listaConversa = listaConversa;
         this.listaConversaEsperada = listaConversaEsperada;
     }

@@ -5,7 +5,7 @@
  */
 package usercase;
 
-import util.ConversaTest;
+import util.ConversaT;
 import util.Conversas;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,7 +43,7 @@ public class ProcessadorConversaTest {
     @Test
     public void testExtrairConversas() {
         System.out.println("* testExtrairConversas: extrairConversas");
-        ConversaTest conversaIncompleta = conversas.comMenssagemImcompletaNoFim();
+        ConversaT conversaIncompleta = conversas.comMenssagemImcompletaNoFim();
         String conversa = conversaIncompleta.toString();
         List<String> result = processadorDeConversas.extrairConversas(conversa);
         assertEquals(conversaIncompleta.size(), result.size());
