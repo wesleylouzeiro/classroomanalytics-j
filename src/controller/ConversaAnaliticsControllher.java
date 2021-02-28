@@ -7,6 +7,9 @@ package controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
+import model.Pessoa;
 import repository.FileDataAccess;
 import usercase.ProcessadorConversa;
 
@@ -22,10 +25,16 @@ public class ConversaAnaliticsControllher {
         FileDataAccess fileDA = new FileDataAccess();
         String conversa = fileDA.extrairTexto(file);
         conversa = fileDA.limparTexto(conversa);
-//        System.out.println("conversa: "+conversa);
-//        System.out.println("processador.extrairConversas(conversa).size(): "+processador.extrairConversas(conversa).size());
         String resultado = processador.extrairConversas(conversa).stream().reduce("", (textoConversa,menssagem)->textoConversa+"\n"+menssagem);
         return resultado;
+    }
+    
+    public Map<String,Pessoa> gerarListaContatos(String conversa){
+        ProcessadorConversa processador = new ProcessadorConversa();  
+        List<String> listaMenssagem = processador.extrairConversas(conversa);
+        Map<String,Pessoa> mapaContato = processador.estruturaConversas(listaMenssagem);
+        
+        return mapaContato;
     }
     
 }
