@@ -5,11 +5,12 @@
  */
 package usercase;
 
-import util.Conversa;
+import util.ConversaTest;
 import util.Conversas;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import model.Pessoa;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -42,7 +43,7 @@ public class ProcessadorConversaTest {
     @Test
     public void testExtrairConversas() {
         System.out.println("* testExtrairConversas: extrairConversas");
-        Conversa conversaIncompleta = conversas.comMenssagemImcompletaNoFim();
+        ConversaTest conversaIncompleta = conversas.comMenssagemImcompletaNoFim();
         String conversa = conversaIncompleta.toString();
         List<String> result = processadorDeConversas.extrairConversas(conversa);
         assertEquals(conversaIncompleta.size(), result.size());
@@ -76,6 +77,19 @@ public class ProcessadorConversaTest {
         String menssagem = conversas.MENSSAGEM_COMPLETA;
         boolean result = UltilMsg.esUmaMenssagemDeConversa(menssagem);
         assertTrue(result);
+    }
+
+    /**
+     * Test of estruturaConversas method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testEstruturaConversas() {
+        System.out.println("* testExtrairConversas: estruturaConversas");
+        List<String> listaDeConversas = conversas.comMenssagemCompleta().getLista();
+        ProcessadorConversa instance = new ProcessadorConversa();
+        HashMap<String, Pessoa> expResult = conversas.estruturaDeDadosDaConversaComMenssagemCompleta();
+        HashMap<String, Pessoa> result = instance.estruturaConversas(listaDeConversas);
+        assertEquals(expResult, result);
     }
 
 }

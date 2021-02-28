@@ -14,6 +14,8 @@ import java.util.Objects;
  * @author Dev
  */
 public class Pessoa {
+
+    
     private final String nome;
     private final String contato;
     private Tipo tipo;
@@ -33,7 +35,14 @@ public class Pessoa {
     }
     
     public void setConversa(Conversa conversa){
-        this.conversas.add(conversa);
+        this.getConversas().add(conversa);
+    }
+    
+    /**
+     * @return the conversas
+     */
+    public List<Conversa> getConversas() {
+        return conversas;
     }
 
     /**

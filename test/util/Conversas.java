@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+import model.Conversa;
+import model.Menssagem;
+import model.Pessoa;
 
 /**
  *
@@ -30,52 +33,63 @@ public class Conversas {
     public final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
     
       
-    
+    public HashMap<String, Pessoa> estruturaDeDadosDaConversaComMenssagemCompleta(){
+        Pessoa pessoaJoao = new Pessoa(CONTATO_JOAO_SILVA,CONTATO_JOAO_SILVA);
+        Conversa conversa_11_02_21 = new Conversa(DATE_11_02_21);
+        Menssagem menssagem = new Menssagem(DATE_11_02_21, TIME_16_30, TEXTO_MENSSAGEM);
+        conversa_11_02_21.setMenssagens(menssagem);
+        conversa_11_02_21.setMenssagens(menssagem);
+        conversa_11_02_21.setMenssagens(menssagem);
+        pessoaJoao.setConversa(conversa_11_02_21);
+        HashMap<String, Pessoa>  mapaContato = new HashMap<>();
+        mapaContato.put(pessoaJoao.getContato(), pessoaJoao);
+        return mapaContato;
+    }
         
-    public Conversa comMenssagemCompleta(){
+    public ConversaTest comMenssagemCompleta(){
         String[] conversaComMenssagensCompletas = {MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA};
-        return new Conversa(conversaComMenssagensCompletas);
+        return new ConversaTest(conversaComMenssagensCompletas);
     }
     
-    public Conversa comMenssagemImcompletaNoInicio(){
+    public ConversaTest comMenssagemImcompletaNoInicio(){
         String[] conversaComMenssagensImcompletasBruta = {COMPLEMENTO_MENSSAGEM,MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA};
         String[] conversaComMenssagensImcompletasEsperada = {COMPLEMENTO_MENSSAGEM,MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }
     
-    public Conversa comMenssagemImcompletaNoMeio(){
+    public ConversaTest comMenssagemImcompletaNoMeio(){
         String[] conversaComMenssagensImcompletasBruta = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM,MENSSAGEM_COMPLETA};
         String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA+COMPLEMENTO_MENSSAGEM,MENSSAGEM_COMPLETA};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }
     
-    public Conversa comMenssagemImcompletaNoFim(){
+    public ConversaTest comMenssagemImcompletaNoFim(){
         String[] conversaComMenssagensImcompletasBruta = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM};
         String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA+COMPLEMENTO_MENSSAGEM};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }   
     
-    public Conversa comMenssagemImcompletaMultipos(){
+    public ConversaTest comMenssagemImcompletaMultipos(){
         String[] conversaComMenssagensImcompletasBruta = {MENSSAGEM_COMPLETA,
             MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM,
             MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM};
         String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,
             MENSSAGEM_IMCOMPLETA+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM,
             MENSSAGEM_IMCOMPLETA+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }  
     
     
-    public Conversa comComplementosDeMenssagens(){
+    public ConversaTest comComplementosDeMenssagens(){
         String[] conversaComMenssagensImcompletasBruta = {COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM,COMPLEMENTO_MENSSAGEM};
         String[] conversaComMenssagensImcompletasEsperada = {COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }
     
     
     
-    public List<Conversa> getTodasConversas(){
-        ArrayList<Conversa> todasConversas = new ArrayList<>();
+    public List<ConversaTest> getTodasConversas(){
+        ArrayList<ConversaTest> todasConversas = new ArrayList<>();
         todasConversas.add(this.comMenssagemCompleta());
         todasConversas.add(this.comMenssagemImcompletaNoInicio());
         todasConversas.add(this.comMenssagemImcompletaNoMeio());
@@ -85,13 +99,13 @@ public class Conversas {
         return todasConversas;
     }
     
-    public Conversa comMenssagemSuja(){
+    public ConversaTest comMenssagemSuja(){
         String[] conversaComMenssagensImcompletasBruta = {
             "   "+MENSSAGEM_COMPLETA,
             MENSSAGEM_IMCOMPLETA+"\n\n\n\n",
             "\t"+COMPLEMENTO_MENSSAGEM};//,MENSSAGEM_COMPLETA};
         String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,MENSSAGEM_IMCOMPLETA,COMPLEMENTO_MENSSAGEM};//,MENSSAGEM_COMPLETA};
-        return new Conversa(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+        return new ConversaTest(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }
     
     

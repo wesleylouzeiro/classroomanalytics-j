@@ -30,9 +30,12 @@ public class UltilitarioMenssagem {
         return Pattern.matches(dataTimeRegex + ".*", menssagem);
     }
     
+    public String extrairNomeContato(String menssagem){
+        return extrairComponenteMenssagem(menssagem)[CONTATO];
+    }    
 
     public Pessoa extrairContato(String menssagem) {
-        String contato = extrairComponenteMenssagem(menssagem)[CONTATO];
+        String contato = extrairNomeContato(menssagem);
         return new Pessoa(contato, contato);
     }
     

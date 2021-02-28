@@ -36,6 +36,10 @@ public class Conversa {
     public LocalDate getData() {
         return data;
     }
+    
+    public void setMenssagens(Menssagem menssagem) {
+        listaMenssagens.add(menssagem);
+    }
 
     /**
      * @return the listaMenssagens
@@ -92,6 +96,8 @@ public class Conversa {
     public int getQuantidadeOutros() {
         return quantidadeOutros;
     }
+    
+    
      
     
 }
