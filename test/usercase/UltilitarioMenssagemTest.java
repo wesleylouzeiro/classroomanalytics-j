@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package usercase;
 
-import service.UltilitarioMenssagem;
 import java.time.LocalDate;
 import model.Menssagem;
 import model.Pessoa;
@@ -31,9 +30,6 @@ public class UltilitarioMenssagemTest {
         System.out.println("* testEsUmaMenssagemDeConversa: esUmaMenssagemDeConversa");
         UltilitarioMenssagem instance = new UltilitarioMenssagem();
         assertTrue(instance.esUmaMenssagemDeConversa(BaseConversas.MENSSAGEM_COMPLETA));
-        assertFalse(instance.esUmaMenssagemDeConversa(BaseConversas.ICORRETA_MENSSAGEM_SEM_DATA));
-        assertFalse(instance.esUmaMenssagemDeConversa(BaseConversas.ICORRETA_MENSSAGEM_SEM_HORA));
-        assertFalse(instance.esUmaMenssagemDeConversa(BaseConversas.ICORRETA_MENSSAGEM_SEM_CONTATO));
     }
 
     /**

@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package usercase;
 
-import service.ProcessadorConversa;
-import service.UltilitarioMenssagem;
 import util.ConversaT;
 import util.Conversas;
 import java.util.Arrays;

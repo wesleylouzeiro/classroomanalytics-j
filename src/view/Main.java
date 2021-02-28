@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -37,15 +36,18 @@ public class Main extends javax.swing.JFrame implements IDashboard {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        campoEditorPane = new javax.swing.JEditorPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tableEstaus = new javax.swing.JTable();
+        jTable1 = new javax.swing.JTable();
+        jToolBar1 = new javax.swing.JToolBar();
         importaArquivoButton = new javax.swing.JToggleButton();
-        botaoTeste = new javax.swing.JButton();
-        campoData = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        tableEstaus.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane2.setViewportView(campoEditorPane);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -56,7 +58,9 @@ public class Main extends javax.swing.JFrame implements IDashboard {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tableEstaus);
+        jScrollPane3.setViewportView(jTable1);
+
+        jToolBar1.setRollover(true);
 
         importaArquivoButton.setText("Importar Arquivo");
         importaArquivoButton.setFocusable(false);
@@ -67,46 +71,33 @@ public class Main extends javax.swing.JFrame implements IDashboard {
                 importaArquivoButtonActionPerformed(evt);
             }
         });
-
-        botaoTeste.setText("Teste");
-        botaoTeste.setFocusable(false);
-        botaoTeste.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botaoTeste.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botaoTeste.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoTesteActionPerformed(evt);
-            }
-        });
-
-        campoData.setText("dia/mês/ano");
+        jToolBar1.add(importaArquivoButton);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(importaArquivoButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(botaoTeste))
-                    .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(483, Short.MAX_VALUE))
+                        .addGap(121, 121, 121)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(40, 40, 40))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(importaArquivoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(42, 42, 42)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(243, Short.MAX_VALUE))
         );
 
         pack();
@@ -132,14 +123,7 @@ public class Main extends javax.swing.JFrame implements IDashboard {
         }else{
             JOptionPane.showMessageDialog(this, "Nome inválido","Nome inválido", JOptionPane.ERROR_MESSAGE);
         }
-        presenter.atualizarTabelaDeContato("");
     }//GEN-LAST:event_importaArquivoButtonActionPerformed
-
-    private void botaoTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTesteActionPerformed
-        
-        //javax.swing.SpinnerDateModel
-    // TODO add your handling code here:
-    }//GEN-LAST:event_botaoTesteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -177,34 +161,16 @@ public class Main extends javax.swing.JFrame implements IDashboard {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoTeste;
-    private javax.swing.JTextField campoData;
+    private javax.swing.JEditorPane campoEditorPane;
     private javax.swing.JToggleButton importaArquivoButton;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable tableEstaus;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JToolBar jToolBar1;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void atualizarCampoEditor(String texto) {
-        JanelaEditor janelaEditor = new JanelaEditor();
-        janelaEditor.setTitle("Texto Importado");
-        janelaEditor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        janelaEditor.setVisible(true);
-        janelaEditor.atualizarCampoEditor(texto);   
-        //campoEditorPane.setText(texto);        
-    }
-
-    
-    @Override
-    public void atualizarTabelaEstatisticaContatos(Object [][] matrizDeEstatisticaContatos) {
-        tableEstaus.setModel(new javax.swing.table.DefaultTableModel(
-                matrizDeEstatisticaContatos
-            ,
-            new String [] {
-                "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
-            }
-        ));
-        
-        jScrollPane3.setViewportView(tableEstaus);
+        campoEditorPane.setText(texto);        
     }
 }
