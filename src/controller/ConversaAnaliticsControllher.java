@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 import model.Pessoa;
 import repository.FileDataAccess;
-import usercase.ProcessadorConversa;
+import service.ProcessadorConversa;
 
 /**
  *
@@ -20,12 +20,13 @@ import usercase.ProcessadorConversa;
 public class ConversaAnaliticsControllher {
     
     
-    public String processarTexto(File file) throws IOException{
+    public String processarArquivoDeTexto(File file) throws IOException{
         ProcessadorConversa processador = new ProcessadorConversa();  
         FileDataAccess fileDA = new FileDataAccess();
         String conversa = fileDA.extrairTexto(file);
         conversa = fileDA.limparTexto(conversa);
-        String resultado = processador.extrairConversas(conversa).stream().reduce("", (textoConversa,menssagem)->textoConversa+"\n"+menssagem);
+        String resultado = processador.extrairConversas(conversa).stream()
+                .reduce("", (textoConversa,menssagem)->textoConversa+(textoConversa.isBlank()?"":"\n")+menssagem);
         return resultado;
     }
     

@@ -11,4 +11,5 @@ package view;
  */
 public interface IDashboard {
     public void atualizarCampoEditor(String texto);
+    public void atualizarTabelaEstatisticaContatos(Object [][] matrizDeEstatisticaContatos);
 }
