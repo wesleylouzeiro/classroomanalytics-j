@@ -64,6 +64,7 @@ public class Conversa {
     
     public void unirConversa(Conversa conversa) {
         this.listaMenssagens.addAll(conversa.listaMenssagens);
+        this.geraEstatisticas();
     }
 
     /**

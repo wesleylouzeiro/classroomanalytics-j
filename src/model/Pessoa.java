@@ -8,6 +8,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.time.LocalDate;
 
 /**
  *
@@ -43,6 +44,12 @@ public class Pessoa {
      */
     public List<Conversa> getConversas() {
         return conversas;
+    }
+    
+    public Conversa getResumoConversas(){
+        Conversa conversaResumida = new Conversa(LocalDate.now());
+        conversas.forEach((conversa)->conversaResumida.unirConversa(conversa));
+        return conversaResumida;
     }
 
     /**
