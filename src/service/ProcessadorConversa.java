@@ -44,26 +44,31 @@ public class ProcessadorConversa {
     }
 
     public HashMap<String, Pessoa> estruturaConversas(List<String> listaDeConversas) {
-        HashMap<String, Pessoa> MapaDePessoas = new HashMap<>();
+        final HashMap<String, Pessoa> MapaDePessoas = new HashMap<>();
         listaDeConversas.forEach((String menssagem) -> {
             if (UltilMsg.esUmaMenssagemDeConversa(menssagem)) {
                 Pessoa pessoa = new Pessoa("", "");
                 String contato = UltilMsg.extrairNomeContato(menssagem);
-                if (MapaDePessoas.containsValue(contato)) {
+                if (MapaDePessoas.containsKey(contato)) {
                     pessoa = MapaDePessoas.get(contato);
                 }else{
                     pessoa = UltilMsg.extrairContato(menssagem);
                     MapaDePessoas.put(contato, pessoa);
                 }
                 Menssagem atualMenssagem = UltilMsg.extrairMenssagem(menssagem);
-                Conversa atualConversa = new Conversa(atualMenssagem.getData());
+                Conversa atualConversa = null;
                 for (Conversa conversa : pessoa.getConversas()) {
                     if (conversa.getData().equals(atualMenssagem.getData())) {
                         atualConversa = conversa;
                     }
                 }
-                atualConversa.setMenssagens(atualMenssagem);
-                pessoa.setConversa(atualConversa);                
+                if(atualConversa==null){
+                    atualConversa = new Conversa(atualMenssagem.getData());
+                    atualConversa.setMenssagens(atualMenssagem);
+                    pessoa.setConversa(atualConversa);
+                }else{
+                    pessoa.getConversas().get(pessoa.getConversas().indexOf(atualConversa)).setMenssagens(atualMenssagem);
+                }
             }
         });
         return MapaDePessoas;
