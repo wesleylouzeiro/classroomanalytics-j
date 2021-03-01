@@ -36,6 +36,9 @@ public class Conversas {
     public final String ICORRETA_MENSSAGEM_SEM_HORA=DATA_11_02_21+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
     public final String ICORRETA_MENSSAGEM_SEM_CONTATO=DATA_11_02_21+" "+HORAS_16_30+" - "+TEXTO_MENSSAGEM;
     
+    // "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
+    public final Object[][] MATRIZ_DADOS_CONVERSA= {{CONTATO_JOAO_SILVA,"3",3*TEXTO_MENSSAGEM.length()+"","0","0","0","0","0"}};
+    
     
       
     public HashMap<String, Pessoa> estruturaDeDadosDaConversaComMenssagemCompleta(){

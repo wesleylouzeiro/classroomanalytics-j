@@ -48,7 +48,7 @@ public class ProcessadorConversa {
         listaDeConversas.forEach((String menssagem) -> {
             if (UltilMsg.esUmaMenssagemDeConversa(menssagem)) {
                 Pessoa pessoa = new Pessoa("", "");
-                String contato = UltilMsg.extrairNomeContato(menssagem);
+                String contato = UltilMsg.extrairNomeContato(menssagem);                
                 if (MapaDePessoas.containsKey(contato)) {
                     pessoa = MapaDePessoas.get(contato);
                 }else{
@@ -56,12 +56,7 @@ public class ProcessadorConversa {
                     MapaDePessoas.put(contato, pessoa);
                 }
                 Menssagem atualMenssagem = UltilMsg.extrairMenssagem(menssagem);
-                Conversa atualConversa = null;
-                for (Conversa conversa : pessoa.getConversas()) {
-                    if (conversa.getData().equals(atualMenssagem.getData())) {
-                        atualConversa = conversa;
-                    }
-                }
+                Conversa atualConversa = pessoa.getConversasData(atualMenssagem.getData());
                 if(atualConversa==null){
                     atualConversa = new Conversa(atualMenssagem.getData());
                     atualConversa.setMenssagens(atualMenssagem);
