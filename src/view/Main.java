@@ -196,13 +196,9 @@ public class Main extends javax.swing.JFrame implements IDashboard {
 
     
     @Override
-    public void atualizarTabelaEstatisticaContatos(Object [][] matrizDeEstatisticaContatos) {
+    public void atualizarTabelaEstatisticaContatos(Object [][] matrizDeEstatisticaContatos, String [] nomeColunas ) {
         tableEstaus.setModel(new javax.swing.table.DefaultTableModel(
-                matrizDeEstatisticaContatos
-            ,
-            new String [] {
-                "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
-            }
+                matrizDeEstatisticaContatos,nomeColunas            
         ));
         
         jScrollPane3.setViewportView(tableEstaus);
