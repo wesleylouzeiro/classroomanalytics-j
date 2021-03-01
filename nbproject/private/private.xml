@@ -3,10 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/usercase/ProcessadorConversa.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/model/Conversa.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/test/util/ConversaT.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/model/Menssagem.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/model/Pessoa.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/test/util/Conversas.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/view/IDashboard.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/test/repository/FileDataAccessTest.java</file>
             <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/controller/ConversaAnaliticsControllher.java</file>
-            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/test/usercase/Conversa.java</file>
-            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/test/usercase/ProcessadorConversaTest.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/repository/FileDataAccess.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/view/Main.java</file>
+            <file>file:/H:/3-TECNOLOGIA/DESENVOLVIMENTO/Repositório-de-Projetos/Class%20Room%20Analytic/ClassRoomAnalytics/src/view/MainPresenter.java</file>
         </group>
     </open-files>
 </project-private>
