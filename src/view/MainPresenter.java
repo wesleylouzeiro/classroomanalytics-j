@@ -39,15 +39,11 @@ public class MainPresenter {
     }
     
     public void atualizarTabelaDeContato(String data){
-        //String texto = conversaAnaliticsControl.processarArquivoDeTexto(file);
-        Map<String, Pessoa> mapaPessoa = conversaAnaliticsControl.gerarListaContatos(textoDeArquivoAtual);
-        Object [][] matrizDados = new Object [][] {
-                {"João", "12", "", null},
-                {"Maria", "22", null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            };
-        this.dashboard.atualizarTabelaEstatisticaContatos(matrizDados);
+        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstaisticoDeContatos(textoDeArquivoAtual);        
+        String[] nomeColunas = new String [] {
+                "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"};
+        
+        this.dashboard.atualizarTabelaEstatisticaContatos(matrizDados,nomeColunas);
     }
     
 }
