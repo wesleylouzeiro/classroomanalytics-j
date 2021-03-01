@@ -44,7 +44,7 @@ public class ProcessadorConversaTest {
      */
     @Test
     public void testExtrairConversas() {
-        System.out.println("* testExtrairConversas: extrairConversas");
+        System.out.println("* ProcessadorConversaTest: extrairConversas");
         ConversaT conversaIncompleta = BaseConversas.comMenssagemImcompletaNoFim();
         String conversa = conversaIncompleta.toString();
         List<String> result = processadorDeConversas.extrairConversas(conversa);
@@ -59,7 +59,7 @@ public class ProcessadorConversaTest {
      */
     @Test
     public void testMultiplosExtrairConversas() {
-        System.out.println("* testExtrairConversas: testMultiplosExtrairConversas");
+        System.out.println("* ProcessadorConversaTest: testMultiplosExtrairConversas");
         BaseConversas.getTodasConversas().forEach((conversaIncompleta) -> {
             String conversa = conversaIncompleta.toString();
             List<String> result = processadorDeConversas.extrairConversas(conversa);
@@ -75,7 +75,7 @@ public class ProcessadorConversaTest {
      */
     @Test
     public void testEsUmaMenssagemDeConversa() {
-        System.out.println("* testExtrairConversas: esUmaMenssagemDeConversa");
+        System.out.println("* ProcessadorConversaTest: esUmaMenssagemDeConversa");
         String menssagem = BaseConversas.MENSSAGEM_COMPLETA;
         boolean result = UltilMsg.esUmaMenssagemDeConversa(menssagem);
         assertTrue(result);
@@ -86,7 +86,7 @@ public class ProcessadorConversaTest {
      */
     @Test
     public void testEstruturaConversas() {
-        System.out.println("* testExtrairConversas: estruturaConversas");
+        System.out.println("* ProcessadorConversaTest: estruturaConversas");
         List<String> listaDeConversas = BaseConversas.comMenssagemCompleta().getLista();
         ProcessadorConversa instance = new ProcessadorConversa();
         HashMap<String, Pessoa> expResult = BaseConversas.estruturaDeDadosDaConversaComMenssagemCompleta();
@@ -95,14 +95,51 @@ public class ProcessadorConversaTest {
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA), result.get(BaseConversas.CONTATO_JOAO_SILVA));
         assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().size(), result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().size());
-        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getData(), 
+        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getData(),
                 result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getData());
-        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().size(), 
+        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().size(),
                 result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().size());
-        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0), 
+        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0),
                 result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0));
-        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0).getMenssagens(), 
-                result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0).getMenssagens());        
+        assertEquals(expResult.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0).getMenssagens(),
+                result.get(BaseConversas.CONTATO_JOAO_SILVA).getConversas().get(0).getListaMenssagens().get(0).getMenssagens());
+    }
+
+    /**
+     * Test of estruturaConversas method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testEstruturaConversasMutiContato() {
+        System.out.println("* ProcessadorConversaTest: EstruturaConversasMutiContato");
+        List<String> listaDeConversas = BaseConversas.comMenssagemCompletaJoaoMaria().getLista();
+        ProcessadorConversa instance = new ProcessadorConversa();
+        HashMap<String, Pessoa> expResult = BaseConversas.estruturaDeDadosDaConversaComMenssagemCompletaEMutiplosContatos();
+        HashMap<String, Pessoa> result = instance.estruturaConversas(listaDeConversas);
+        assertEquals(expResult, result);
+        assertEquals(expResult.size(), result.size());
+        expResult.keySet().stream().map(contato -> {
+            assertEquals(expResult.get(contato), result.get(contato));
+            return contato;
+        }).map(contato -> {
+            assertEquals(expResult.get(contato).getConversas().size(), result.get(contato).getConversas().size());
+            return contato;
+        }).map(contato -> {
+            assertEquals(expResult.get(contato).getConversas().get(0).getData(),
+                    result.get(contato).getConversas().get(0).getData());
+            return contato;
+        }).map(contato -> {
+            assertEquals(expResult.get(contato).getConversas().get(0).getListaMenssagens().size(),
+                    result.get(contato).getConversas().get(0).getListaMenssagens().size());
+            return contato;
+        }).map(contato -> {
+            assertEquals(expResult.get(contato).getConversas().get(0).getListaMenssagens().get(0),
+                    result.get(contato).getConversas().get(0).getListaMenssagens().get(0));
+            return contato;
+        }).forEachOrdered(contato -> {
+            assertEquals(expResult.get(contato).getConversas().get(0).getListaMenssagens().get(0).getMenssagens(),
+                    result.get(contato).getConversas().get(0).getListaMenssagens().get(0).getMenssagens());
+        });
+
     }
 
 }

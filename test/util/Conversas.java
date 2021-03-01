@@ -22,6 +22,7 @@ import model.Pessoa;
 public class Conversas {
     
     public final String CONTATO_JOAO_SILVA="João Silva";
+    public final String CONTATO_MARIA_SOUSA="Maria Sousa";
     public final String DATA_11_02_21="11/02/2021";
     public final LocalDate DATE_11_02_21=LocalDate.of(2021, 02, 11);
     public final String HORAS_16_30="16:30";
@@ -29,6 +30,7 @@ public class Conversas {
     public final String TEXTO_MENSSAGEM="Essa é uma menssagem completa.";
     
     public final String MENSSAGEM_COMPLETA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
+    public final String MENSSAGEM_COMPLETA_MARIA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_MARIA_SOUSA+": "+TEXTO_MENSSAGEM;
     public final String MENSSAGEM_IMCOMPLETA="11/02/2021 16:31 - João Silva: Essa messagem esta imcompleta pois...";
     public final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
     
@@ -42,18 +44,39 @@ public class Conversas {
     
       
     public HashMap<String, Pessoa> estruturaDeDadosDaConversaComMenssagemCompleta(){
-        Pessoa pessoaJoao = new Pessoa(CONTATO_JOAO_SILVA,CONTATO_JOAO_SILVA);
-        Conversa conversa_11_02_21 = new Conversa(DATE_11_02_21);
-        Menssagem menssagem = new Menssagem(DATE_11_02_21, TIME_16_30, TEXTO_MENSSAGEM);
-        conversa_11_02_21.setMenssagens(menssagem);
-        conversa_11_02_21.setMenssagens(menssagem);
-        conversa_11_02_21.setMenssagens(menssagem);
-        pessoaJoao.setConversa(conversa_11_02_21);
-        HashMap<String, Pessoa>  mapaContato = new HashMap<>();
-        mapaContato.put(pessoaJoao.getContato(), pessoaJoao);
+        String[] textoMenssagens = {TEXTO_MENSSAGEM,TEXTO_MENSSAGEM,TEXTO_MENSSAGEM};
+        HashMap<String, Pessoa>  mapaContato = this.geraEstruturaDeDadosPessoaConversa(CONTATO_JOAO_SILVA, DATE_11_02_21, textoMenssagens);
         return mapaContato;
     }
-        
+    
+    public HashMap<String, Pessoa> estruturaDeDadosDaConversaComMenssagemCompletaEMutiplosContatos(){
+        String[] textoMenssagens = {TEXTO_MENSSAGEM,TEXTO_MENSSAGEM,TEXTO_MENSSAGEM};
+        HashMap<String, Pessoa>  mapaContato = this.geraEstruturaDeDadosPessoaConversa(CONTATO_JOAO_SILVA, DATE_11_02_21, textoMenssagens);
+        HashMap<String, Pessoa>  mapaContatoMaria = this.geraEstruturaDeDadosPessoaConversa(CONTATO_MARIA_SOUSA, DATE_11_02_21, textoMenssagens);
+        mapaContato.putAll(mapaContatoMaria);
+        return mapaContato;
+    }
+    
+    
+    
+    public HashMap<String, Pessoa> geraEstruturaDeDadosPessoaConversa(String contato, LocalDate dataConversa, String[] textoMenssagens){
+        Pessoa pessoa = new Pessoa(contato,contato);
+        Conversa conversa = new Conversa(dataConversa);        
+        for(String textoMenssagem:textoMenssagens){
+            conversa.setMenssagens(new Menssagem(dataConversa, TIME_16_30, textoMenssagem));
+        }        
+        pessoa.setConversa(conversa);
+        HashMap<String, Pessoa>  mapaContato = new HashMap<>();
+        mapaContato.put(pessoa.getContato(), pessoa);
+        return mapaContato;
+    }
+    
+    public ConversaT comMenssagemCompletaJoaoMaria(){
+        String[] conversaComMenssagensCompletas = {MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,
+            MENSSAGEM_COMPLETA_MARIA,MENSSAGEM_COMPLETA_MARIA,MENSSAGEM_COMPLETA_MARIA};
+        return new ConversaT(conversaComMenssagensCompletas);
+    }
+    
     public ConversaT comMenssagemCompleta(){
         String[] conversaComMenssagensCompletas = {MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA};
         return new ConversaT(conversaComMenssagensCompletas);
