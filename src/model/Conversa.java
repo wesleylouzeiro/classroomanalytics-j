@@ -28,10 +28,12 @@ public class Conversa {
     
     public void geraEstatisticas(){
         this.quantidadeInteracao = this.listaMenssagens.size();
+        this.quantidadeMidia=0;
+        this.quantidadeTexto=0;
         this.listaMenssagens.forEach((menssagem)->{
             String textoMenssagem = menssagem.getMenssagens();
             this.quantidadeTexto += textoMenssagem.length();
-            this.quantidadeMidia += textoMenssagem.split("<Arquivo de mídia oculto>").length-1;
+            this.quantidadeMidia += (textoMenssagem+" ").split("<Arquivo\\sde\\smídia\\soculto>").length-1;
         });
     }
 
