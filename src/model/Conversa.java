@@ -20,11 +20,7 @@ public class Conversa {
     
     private int quantidadeInteracao;
     private int quantidadeTexto;
-    private int quantidadeImagens;
-    private int quantidadeDocumentos;
-    private int quantidadeAudios;
-    private int quantidadeVideos;
-    private int quantidadeOutros;
+    private int quantidadeMidia;
 
     public Conversa(LocalDate data) {
         this.data = data;
@@ -35,11 +31,7 @@ public class Conversa {
         this.listaMenssagens.forEach((menssagem)->{
             String textoMenssagem = menssagem.getMenssagens();
             this.quantidadeTexto += textoMenssagem.length();
-            this.quantidadeAudios +=0;
-            this.quantidadeImagens += 0;//textoMenssagem.split("")
-            this.quantidadeDocumentos +=0;
-            this.quantidadeVideos +=0;
-            this.quantidadeOutros +=0;
+            this.quantidadeMidia += textoMenssagem.split("<Arquivo de mídia oculto>").length-1;
         });
     }
 
@@ -82,39 +74,12 @@ public class Conversa {
         return quantidadeTexto;
     }
 
-    /**
-     * @return the quantidadeImagens
-     */
-    public int getQuantidadeImagens() {
-        return quantidadeImagens;
-    }
 
     /**
-     * @return the quantidadeDocumentos
+     * @return the quantidadeMidia
      */
-    public int getQuantidadeDocumentos() {
-        return quantidadeDocumentos;
-    }
-
-    /**
-     * @return the quantidadeAudios
-     */
-    public int getQuantidadeAudios() {
-        return quantidadeAudios;
-    }
-
-    /**
-     * @return the quantidadeVideos
-     */
-    public int getQuantidadeVideos() {
-        return quantidadeVideos;
-    }
-
-    /**
-     * @return the quantidadeOutros
-     */
-    public int getQuantidadeOutros() {
-        return quantidadeOutros;
+    public int getQuantidadeMidia() {
+        return quantidadeMidia;
     }
 
     
