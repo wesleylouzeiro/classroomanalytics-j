@@ -31,7 +31,7 @@ public class Conversa {
     }
     
     public void geraEstatisticas(){
-        this.quantidadeInteracao = this.listaMenssagens.size();
+        this.quantidadeInteracao += this.listaMenssagens.size();
         this.listaMenssagens.forEach((menssagem)->{
             String textoMenssagem = menssagem.getMenssagens();
             this.quantidadeTexto += textoMenssagem.length();
@@ -53,6 +53,7 @@ public class Conversa {
     
     public void setMenssagens(Menssagem menssagem) {
         listaMenssagens.add(menssagem);
+        this.geraEstatisticas();
     }
 
     /**
