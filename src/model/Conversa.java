@@ -29,7 +29,21 @@ public class Conversa {
     public Conversa(LocalDate data) {
         this.data = data;
     }
+    
+    public void geraEstatisticas(){
+        this.quantidadeInteracao = this.listaMenssagens.size();
+        this.listaMenssagens.forEach((menssagem)->{
+            String textoMenssagem = menssagem.getMenssagens();
+            this.quantidadeTexto += textoMenssagem.length();
+            this.quantidadeAudios +=0;
+            this.quantidadeImagens += 0;//textoMenssagem.split("")
+            this.quantidadeDocumentos +=0;
+            this.quantidadeVideos +=0;
+            this.quantidadeOutros +=0;
+        });
+    }
 
+    
     /**
      * @return the data
      */
@@ -46,6 +60,10 @@ public class Conversa {
      */
     public List<Menssagem> getListaMenssagens() {
         return listaMenssagens;
+    }
+    
+    public void unirConversa(Conversa conversa) {
+        this.listaMenssagens.addAll(conversa.listaMenssagens);
     }
 
     /**
@@ -96,7 +114,7 @@ public class Conversa {
     public int getQuantidadeOutros() {
         return quantidadeOutros;
     }
-    
+
     
      
     
