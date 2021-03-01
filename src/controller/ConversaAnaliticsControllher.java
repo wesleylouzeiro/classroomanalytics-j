@@ -42,22 +42,10 @@ public class ConversaAnaliticsControllher {
     /*
      "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
     */
-    public Object [][] gerarMapaEstaisticoDeContatos(String conversa){
-        List<Pessoa> listaContatos = this.gerarListaContatos(conversa);
-        ArrayList<String[]> listaDeDados = new ArrayList<>();        
-        Object [][] matrizDados = new Object [listaContatos.size()][8];                        
-        for(int index=0; index<listaContatos.size();index++){
-            Pessoa contato = listaContatos.get(index);
-            matrizDados[index][0] = contato.getContato();
-                matrizDados[index][1] = contato.getResumoConversas().getQuantidadeInteracao();
-                matrizDados[index][2] = contato.getResumoConversas().getQuantidadeTexto();
-                matrizDados[index][3] = contato.getResumoConversas().getQuantidadeImagens();
-                matrizDados[index][4] = contato.getResumoConversas().getQuantidadeDocumentos();
-                matrizDados[index][5] = contato.getResumoConversas().getQuantidadeAudios();
-                matrizDados[index][6] = contato.getResumoConversas().getQuantidadeVideos();
-                matrizDados[index][7] = contato.getResumoConversas().getQuantidadeOutros();
-        }
-        
+    public Object [][] gerarMapaEstatisticoDeContatos(String conversa){
+        List<Pessoa> listaContatos = this.gerarListaContatos(conversa);  
+        UtilitarioControllher UtilControlhe = new UtilitarioControllher();
+        Object [][] matrizDados = UtilControlhe.converteListaContatosEmMapaEstaistico(listaContatos);        
         return matrizDados;
     }
     

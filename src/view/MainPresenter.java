@@ -39,7 +39,7 @@ public class MainPresenter {
     }
     
     public void atualizarTabelaDeContato(String data){
-        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstaisticoDeContatos(textoDeArquivoAtual);        
+        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstatisticoDeContatos(textoDeArquivoAtual);        
         String[] nomeColunas = new String [] {
                 "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"};
         
