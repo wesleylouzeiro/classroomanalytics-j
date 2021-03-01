@@ -16,7 +16,7 @@ import model.Pessoa;
 public class UtilitarioControllher {
     
     public Object [][] converteListaContatosEmMapaEstaistico(List<Pessoa> listaContatos){    
-        Object [][] matrizDados = new Object [listaContatos.size()][9];                        
+        Object [][] matrizDados = new Object [listaContatos.size()][4];                        
         for(int index=0; index<listaContatos.size();index++){
             Pessoa contato = listaContatos.get(index);
             matrizDados[index][0] = contato.getContato();
