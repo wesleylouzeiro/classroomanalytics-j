@@ -5,6 +5,7 @@
  */
 package service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,6 +43,18 @@ public class ProcessadorConversa {
         }
         return menssagemCorrigida;
     }
+    
+    public List<String> filtraConversa(List<String> listaConversa, LocalDate data){
+        List<String> listaFiltrada = new ArrayList<>();
+        listaConversa.forEach((menssagem)->{
+            if (UltilMsg.esUmaMenssagemDeConversa(menssagem) && UltilMsg.extrairMenssagem(menssagem).getData().equals(data)) {
+                listaFiltrada.add(menssagem);
+            }        
+        });
+        return listaFiltrada;
+    }
+    
+    
 
     public HashMap<String, Pessoa> estruturaConversas(List<String> listaDeConversas) {
         final HashMap<String, Pessoa> MapaDePessoas = new HashMap<>();

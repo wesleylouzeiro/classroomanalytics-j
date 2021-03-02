@@ -5,6 +5,8 @@
  */
 package service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
 import service.ProcessadorConversa;
 import service.UltilitarioMenssagem;
 import util.ConversaT;
@@ -140,6 +142,27 @@ public class ProcessadorConversaTest {
                     result.get(contato).getConversas().get(0).getListaMenssagens().get(0).getMenssagens());
         });
 
+    }
+
+    /**
+     * Test of filtraConversa method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testFiltraConversa() {
+        System.out.println("* ProcessadorConversaTest: filtraConversa");
+        List<String> listaConversa = BaseConversas.comMenssagemCompletaDataDiferente().getLista();
+        LocalDate data = BaseConversas.DATE_11_02_21;
+        ProcessadorConversa instance = new ProcessadorConversa();
+        List<String> expResult = BaseConversas.comMenssagemCompletaDataDiferente().getListaEsperada();
+        List<String> result = instance.filtraConversa(listaConversa, data);
+        assertEquals(expResult.size(), result.size());
+        assertEquals(expResult, result);        
+        result = instance.filtraConversa(listaConversa, BaseConversas.DATE_12_02_21);
+        expResult = new ArrayList();
+        expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);
+        expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);
+        assertEquals(expResult.size(), result.size());
+        assertEquals(expResult, result);        
     }
 
 }

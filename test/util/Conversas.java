@@ -29,12 +29,15 @@ public class Conversas {
     public final LocalTime TIME_16_30=LocalTime.of(16, 30, 00);
     public final String TEXTO_MENSSAGEM="Essa é uma menssagem completa.";
     public final String MIDIA_MENSSAGEM="<Arquivo de mídia oculto>";
+    public final String DATA_12_02_21="12/02/2021";
+    public final LocalDate DATE_12_02_21=LocalDate.of(2021, 02, 12);
     
     public final String MENSSAGEM_COMPLETA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
     public final String MENSSAGEM_COMPLETA_MARIA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_MARIA_SOUSA+": "+TEXTO_MENSSAGEM;
     public final String MENSSAGEM_IMCOMPLETA="11/02/2021 16:31 - João Silva: Essa messagem esta imcompleta pois...";
     public final String COMPLEMENTO_MENSSAGEM="... aqui está o complemento da menssagem restante.";
     public final String MENSSAGEM_MIDIA=DATA_11_02_21+" "+HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+MIDIA_MENSSAGEM;
+    public final String MENSSAGEM_OUTRA_DATA = DATA_12_02_21+" "+HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
     
     
     public final String ICORRETA_MENSSAGEM_SEM_DATA=HORAS_16_30+" - "+CONTATO_JOAO_SILVA+": "+TEXTO_MENSSAGEM;
@@ -112,6 +115,12 @@ public class Conversas {
             MENSSAGEM_IMCOMPLETA+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM+COMPLEMENTO_MENSSAGEM};
         return new ConversaT(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
     }  
+    
+    public ConversaT comMenssagemCompletaDataDiferente(){
+        String[] conversaComMenssagensImcompletasBruta = {MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_OUTRA_DATA,MENSSAGEM_OUTRA_DATA};
+        String[] conversaComMenssagensImcompletasEsperada = {MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA,MENSSAGEM_COMPLETA};
+        return new ConversaT(conversaComMenssagensImcompletasBruta,conversaComMenssagensImcompletasEsperada);  
+    }
     
     
     public ConversaT comComplementosDeMenssagens(){
