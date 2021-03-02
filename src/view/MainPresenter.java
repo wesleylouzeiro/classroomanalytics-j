@@ -38,8 +38,8 @@ public class MainPresenter {
         return arquivoSelecionado!=null && arquivoSelecionado.isFile() && !arquivoSelecionado.getName().equals("");
     }
     
-    public void atualizarTabelaDeContato(String data){
-        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstatisticoDeContatos(textoDeArquivoAtual);        
+    public void atualizarTabelaDeContato(String dataFiltro){
+        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstatisticoDeContatos(textoDeArquivoAtual,dataFiltro);        
         String[] nomeColunas = new String [] {
                 "Contados", "Interação", "Texto", "Mídia"};
         

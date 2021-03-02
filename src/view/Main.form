@@ -27,12 +27,12 @@
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jScrollPane3" min="-2" pref="424" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
-                      <Component id="importaArquivoButton" min="-2" max="-2" attributes="0"/>
+                  <Component id="importaArquivoButton" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="campoData" min="-2" pref="142" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="botaoTeste" min="-2" max="-2" attributes="0"/>
+                      <Component id="botaoTeste" min="-2" pref="89" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="campoData" alignment="0" min="-2" pref="142" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="483" max="32767" attributes="0"/>
           </Group>
@@ -42,12 +42,12 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="importaArquivoButton" min="-2" pref="21" max="-2" attributes="0"/>
-                  <Component id="botaoTeste" min="-2" pref="21" max="-2" attributes="0"/>
-              </Group>
+              <Component id="importaArquivoButton" min="-2" pref="21" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="campoData" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="botaoTeste" max="32767" attributes="0"/>
+                  <Component id="campoData" max="32767" attributes="0"/>
+              </Group>
               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
               <Component id="jScrollPane3" pref="640" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="botaoTeste">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Teste"/>
+        <Property name="text" type="java.lang.String" value="Filtrar"/>
         <Property name="focusable" type="boolean" value="false"/>
         <Property name="horizontalTextPosition" type="int" value="0"/>
         <Property name="verticalTextPosition" type="int" value="3"/>

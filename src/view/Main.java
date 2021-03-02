@@ -68,7 +68,7 @@ public class Main extends javax.swing.JFrame implements IDashboard {
             }
         });
 
-        botaoTeste.setText("Teste");
+        botaoTeste.setText("Filtrar");
         botaoTeste.setFocusable(false);
         botaoTeste.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         botaoTeste.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -88,22 +88,22 @@ public class Main extends javax.swing.JFrame implements IDashboard {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(importaArquivoButton)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(importaArquivoButton)
+                        .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(botaoTeste))
-                    .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(botaoTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(483, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(importaArquivoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(botaoTeste, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(importaArquivoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(botaoTeste, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(campoData))
                 .addGap(11, 11, 11)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 640, Short.MAX_VALUE)
                 .addContainerGap())
@@ -136,7 +136,8 @@ public class Main extends javax.swing.JFrame implements IDashboard {
     }//GEN-LAST:event_importaArquivoButtonActionPerformed
 
     private void botaoTesteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoTesteActionPerformed
-        
+        String data = campoData.getText();
+         presenter.atualizarTabelaDeContato(data);
         //javax.swing.SpinnerDateModel
     // TODO add your handling code here:
     }//GEN-LAST:event_botaoTesteActionPerformed
