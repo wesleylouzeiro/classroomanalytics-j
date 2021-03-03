@@ -154,10 +154,10 @@ public class ProcessadorConversaTest {
         LocalDate data = BaseConversas.DATE_11_02_21;
         ProcessadorConversa instance = new ProcessadorConversa();
         List<String> expResult = BaseConversas.comMenssagemCompletaDataDiferente().getListaEsperada();
-        List<String> result = instance.filtraConversa(listaConversa, data);
+        List<String> result = instance.filtraConversa(listaConversa, data, data);
         assertEquals(expResult.size(), result.size());
         assertEquals(expResult, result);        
-        result = instance.filtraConversa(listaConversa, BaseConversas.DATE_12_02_21);
+        result = instance.filtraConversa(listaConversa, BaseConversas.DATE_12_02_21, BaseConversas.DATE_12_02_21);
         expResult = new ArrayList();
         expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);
         expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);

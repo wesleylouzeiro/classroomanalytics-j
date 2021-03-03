@@ -44,10 +44,10 @@ public class ProcessadorConversa {
         return menssagemCorrigida;
     }
 
-    public List<String> filtraConversa(List<String> listaConversa, LocalDate data) {
+    public List<String> filtraConversa(List<String> listaConversa, LocalDate dataInicio, LocalDate dataFim) {
         List<String> listaFiltrada = new ArrayList<>();
         listaConversa.forEach((menssagem) -> {
-            if (UltilMsg.esUmaMenssagemDeConversa(menssagem) && UltilMsg.extrairMenssagem(menssagem).getData().equals(data)) {
+            if (UltilMsg.menssagemEstarEntreDatas(menssagem, dataInicio, dataFim)) {
                 listaFiltrada.add(menssagem);
             }
         });
@@ -71,7 +71,7 @@ public class ProcessadorConversa {
         final HashMap<String, Pessoa> MapaDePessoas = new HashMap<>();
         listaDeConversas.forEach((String menssagem) -> {
             if (UltilMsg.esUmaMenssagemDeConversa(menssagem)) {
-                Pessoa pessoa = new Pessoa("", "");
+                Pessoa pessoa;
                 String contato = UltilMsg.extrairNomeContato(menssagem);
                 if (MapaDePessoas.containsKey(contato)) {
                     pessoa = MapaDePessoas.get(contato);
