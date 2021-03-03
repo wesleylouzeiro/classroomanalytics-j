@@ -62,6 +62,15 @@ public class UltilitarioMenssagem {
         return menssagemComponente;
     }
     
+    public boolean menssagemEstarEntreDatas(String menssagem, LocalDate dataInicio, LocalDate dataFim){
+        LocalDate data;
+        if(esUmaMenssagemDeConversa(menssagem) ){
+            data =  extrairMenssagem(menssagem).getData();
+            return  (data.equals(dataInicio) || data.equals(dataFim)) || (data.isAfter(dataInicio)
+                && data.isBefore(dataFim));  
+        }        
+        return false;      
+    }    
         
 
 }

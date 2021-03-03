@@ -19,6 +19,7 @@ import util.Conversas;
  */
 public class UltilitarioMenssagemTest {
     Conversas BaseConversas = new Conversas();
+    UltilitarioMenssagem instance = new UltilitarioMenssagem();
     
     public UltilitarioMenssagemTest() {
     }
@@ -29,7 +30,6 @@ public class UltilitarioMenssagemTest {
     @Test
     public void testEsUmaMenssagemDeConversa() {
         System.out.println("* testEsUmaMenssagemDeConversa: esUmaMenssagemDeConversa");
-        UltilitarioMenssagem instance = new UltilitarioMenssagem();
         assertTrue(instance.esUmaMenssagemDeConversa(BaseConversas.MENSSAGEM_COMPLETA));
         assertFalse(instance.esUmaMenssagemDeConversa(BaseConversas.ICORRETA_MENSSAGEM_SEM_DATA));
         assertFalse(instance.esUmaMenssagemDeConversa(BaseConversas.ICORRETA_MENSSAGEM_SEM_HORA));
@@ -43,7 +43,6 @@ public class UltilitarioMenssagemTest {
     public void testExtrairContato() {
         System.out.println("* testEsUmaMenssagemDeConversa: extrairContato");
         String contato = BaseConversas.CONTATO_JOAO_SILVA;
-        UltilitarioMenssagem instance = new UltilitarioMenssagem();
         Pessoa expResult = new Pessoa(contato,contato);
         Pessoa result = instance.extrairContato(BaseConversas.MENSSAGEM_COMPLETA);
         assertEquals(expResult, result);
@@ -56,7 +55,6 @@ public class UltilitarioMenssagemTest {
     public void testExtrairComponenteMenssagem() {
         System.out.println("* testEsUmaMenssagemDeConversa: extrairComponenteMenssagem");
         String menssagem = BaseConversas.MENSSAGEM_COMPLETA;
-        UltilitarioMenssagem instance = new UltilitarioMenssagem();
         String[] expResult = {BaseConversas.DATA_11_02_21,
             BaseConversas.HORAS_16_30,
             BaseConversas.CONTATO_JOAO_SILVA,
@@ -72,10 +70,38 @@ public class UltilitarioMenssagemTest {
     public void testExtrairMenssagem() {
         System.out.println("* testEsUmaMenssagemDeConversa: extrairMenssagem");
         String menssagem = BaseConversas.MENSSAGEM_COMPLETA;
-        UltilitarioMenssagem instance = new UltilitarioMenssagem();        
         Menssagem expResult = new Menssagem(BaseConversas.DATE_11_02_21,BaseConversas.TIME_16_30,BaseConversas.TEXTO_MENSSAGEM);
         Menssagem result = instance.extrairMenssagem(menssagem);
         assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of extrairNomeContato method, of class UltilitarioMenssagem.
+     */
+    @Test
+    public void testExtrairNomeContato() {
+        System.out.println("* testEsUmaMenssagemDeConversa: extrairNomeContato");
+        String menssagem = BaseConversas.MENSSAGEM_COMPLETA;
+        String expResult = BaseConversas.CONTATO_JOAO_SILVA;
+        String result = instance.extrairNomeContato(menssagem);
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of menssagemEstarEntreDatas method, of class UltilitarioMenssagem.
+     */
+    @Test
+    public void testMenssagemEstarEntreDatas() {
+        System.out.println("* testEsUmaMenssagemDeConversa: menssagemEstarEntreDatas");
+        String menssagem = BaseConversas.MENSSAGEM_COMPLETA;
+        LocalDate data1 = BaseConversas.DATE_11_02_21;
+        LocalDate data2 = BaseConversas.DATE_12_02_21;
+        boolean result = instance.menssagemEstarEntreDatas(menssagem, data1, data2);
+        assertTrue(result);
+        result = instance.menssagemEstarEntreDatas(menssagem, data1, data1);
+        assertTrue(result);
+        result = instance.menssagemEstarEntreDatas(menssagem, data2, data2);
+        assertFalse(result);   
     }
     
 }
