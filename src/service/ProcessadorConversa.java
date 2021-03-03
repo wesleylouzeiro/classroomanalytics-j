@@ -43,38 +43,49 @@ public class ProcessadorConversa {
         }
         return menssagemCorrigida;
     }
-    
-    public List<String> filtraConversa(List<String> listaConversa, LocalDate data){
+
+    public List<String> filtraConversa(List<String> listaConversa, LocalDate data) {
         List<String> listaFiltrada = new ArrayList<>();
-        listaConversa.forEach((menssagem)->{
+        listaConversa.forEach((menssagem) -> {
             if (UltilMsg.esUmaMenssagemDeConversa(menssagem) && UltilMsg.extrairMenssagem(menssagem).getData().equals(data)) {
                 listaFiltrada.add(menssagem);
-            }        
+            }
         });
         return listaFiltrada;
     }
-    
-    
+
+    public List<String> recuperaDataConversa(List<String> listaConversa) {
+        List<String> listaFiltrada = new ArrayList<>();
+        listaConversa.forEach((menssagem) -> {
+            if (UltilMsg.esUmaMenssagemDeConversa(menssagem)) {
+                String dataMenssagem = UltilMsg.extrairComponenteMenssagem(menssagem)[UltilMsg.DATA];
+                if (!listaFiltrada.contains(dataMenssagem)) {
+                    listaFiltrada.add(dataMenssagem);
+                }
+            }
+        });
+        return listaFiltrada;
+    }
 
     public HashMap<String, Pessoa> estruturaConversas(List<String> listaDeConversas) {
         final HashMap<String, Pessoa> MapaDePessoas = new HashMap<>();
         listaDeConversas.forEach((String menssagem) -> {
             if (UltilMsg.esUmaMenssagemDeConversa(menssagem)) {
                 Pessoa pessoa = new Pessoa("", "");
-                String contato = UltilMsg.extrairNomeContato(menssagem);                
+                String contato = UltilMsg.extrairNomeContato(menssagem);
                 if (MapaDePessoas.containsKey(contato)) {
                     pessoa = MapaDePessoas.get(contato);
-                }else{
+                } else {
                     pessoa = UltilMsg.extrairContato(menssagem);
                     MapaDePessoas.put(contato, pessoa);
                 }
                 Menssagem atualMenssagem = UltilMsg.extrairMenssagem(menssagem);
                 Conversa atualConversa = pessoa.getConversasData(atualMenssagem.getData());
-                if(atualConversa==null){
+                if (atualConversa == null) {
                     atualConversa = new Conversa(atualMenssagem.getData());
                     atualConversa.setMenssagens(atualMenssagem);
                     pessoa.setConversa(atualConversa);
-                }else{
+                } else {
                     pessoa.getConversas().get(pessoa.getConversas().indexOf(atualConversa)).setMenssagens(atualMenssagem);
                 }
             }

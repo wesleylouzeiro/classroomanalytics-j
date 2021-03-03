@@ -19,10 +19,10 @@ import model.Pessoa;
  */
 public class UltilitarioMenssagem {
     
-    private final int DATA=0; 
-    private final int HORA=1;
-    private final int CONTATO=2;
-    private final int MENSSAGEM=3;
+    public final int DATA=0; 
+    public final int HORA=1;
+    public final int CONTATO=2;
+    public final int MENSSAGEM=3;
 
     //11/02/2021 16:30 - João Silva: Essa...    
     private final String dataTimeRegex = "[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}\\s[0-9]{2}:[0-9]{2}\\s";

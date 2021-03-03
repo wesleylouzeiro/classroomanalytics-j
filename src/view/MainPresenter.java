@@ -19,31 +19,34 @@ import model.Pessoa;
  * @author Dev
  */
 public class MainPresenter {
-    
-    private String textoDeArquivoAtual = "";    
+
+    private String textoDeArquivoAtual = "";
     private final IDashboard dashboard;
     private final ConversaAnaliticsControllher conversaAnaliticsControl = new ConversaAnaliticsControllher();
-    
-    public MainPresenter(IDashboard dashboard){
+
+    public MainPresenter(IDashboard dashboard) {
         this.dashboard = dashboard;
     }
-    
-    public void processarDadosDoArquivo(File arquivo) throws FileNotFoundException, IOException{
+
+    public void processarDadosDoArquivo(File arquivo) throws FileNotFoundException, IOException {
         textoDeArquivoAtual = conversaAnaliticsControl.processarArquivoDeTexto(arquivo);
-        
         this.dashboard.atualizarCampoEditor(textoDeArquivoAtual);
     }
-    
-    public boolean esUmArquivoValido(File arquivoSelecionado){
-        return arquivoSelecionado!=null && arquivoSelecionado.isFile() && !arquivoSelecionado.getName().equals("");
+
+    public boolean esUmArquivoValido(File arquivoSelecionado) {
+        return arquivoSelecionado != null && arquivoSelecionado.isFile() && !arquivoSelecionado.getName().equals("");
     }
-    
-    public void atualizarTabelaDeContato(String dataFiltro){
-        Object [][] matrizDados = conversaAnaliticsControl.gerarMapaEstatisticoDeContatos(textoDeArquivoAtual,dataFiltro);        
-        String[] nomeColunas = new String [] {
-                "Contados", "Interação", "Texto", "Mídia"};
-        
-        this.dashboard.atualizarTabelaEstatisticaContatos(matrizDados,nomeColunas);
+
+    public void atualizarTabelaDeContato(String dataFiltro) {
+        Object[][] matrizDados = conversaAnaliticsControl.gerarMapaEstatisticoDeContatos(textoDeArquivoAtual, dataFiltro);
+        String[] nomeColunas = new String[]{"Contados", "Interação", "Texto", "Mídia"};
+        this.dashboard.atualizarTabelaEstatisticaContatos(matrizDados, nomeColunas);
+        this.atualizarBotaoFiltroData(matrizDados.length > 0);
     }
-    
+
+    public void atualizarBotaoFiltroData(boolean ativar) {
+        String[] datas = conversaAnaliticsControl.recuperarTodasAsDatasDaConversa(textoDeArquivoAtual);
+        dashboard.atualizarBotaoFiltro(datas, ativar);
+    }
+
 }

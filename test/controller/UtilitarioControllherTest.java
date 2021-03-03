@@ -36,5 +36,22 @@ public class UtilitarioControllherTest {
         assertArrayEquals(expResult, result);
         // "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
     }
+
+    /**
+     * Test of converteListaStringEmArray method, of class UtilitarioControllher.
+     */
+    @Test
+    public void testConverteListaStringEmArray() {
+        System.out.println("* testConverteListaContatosEmMapaEstaistico: converteListaStringEmArray");
+        List<String> listaDatas = new ArrayList<>();
+        listaDatas.add(BaseConversas.DATA_11_02_21);
+        listaDatas.add(BaseConversas.DATA_11_02_21);
+        listaDatas.add(BaseConversas.DATA_12_02_21);
+        UtilitarioControllher instance = new UtilitarioControllher();
+        String[] expResult = {BaseConversas.DATA_11_02_21,BaseConversas.DATA_11_02_21,BaseConversas.DATA_12_02_21};
+        String[] result = instance.converteListaStringEmArray(listaDatas);
+        assertEquals(expResult.length, result.length);
+        assertArrayEquals(expResult, result);
+    }
     
 }

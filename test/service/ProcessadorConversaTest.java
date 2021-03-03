@@ -162,7 +162,23 @@ public class ProcessadorConversaTest {
         expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);
         expResult.add(BaseConversas.MENSSAGEM_OUTRA_DATA);
         assertEquals(expResult.size(), result.size());
-        assertEquals(expResult, result);        
+        assertEquals(expResult, result);
+    }
+
+    /**
+     * Test of recuperaDataConversa method, of class ProcessadorConversa.
+     */
+    @Test
+    public void testRecuperaDataConversa() {
+        System.out.println("* ProcessadorConversaTest: recuperaDataConversa");
+        List<String> listaConversa = BaseConversas.comMenssagemCompletaDataDiferente().getLista();
+        ProcessadorConversa instance = new ProcessadorConversa();
+        List<String> expResult = new ArrayList();
+        expResult.add(BaseConversas.DATA_11_02_21);
+        expResult.add(BaseConversas.DATA_12_02_21);
+        List<String> result = instance.recuperaDataConversa(listaConversa);
+        assertEquals(expResult.size(), result.size());
+        assertEquals(expResult, result);
     }
 
 }
