@@ -35,23 +35,28 @@ public class ConversaAnaliticsControllher {
         return resultado;
     }
 
-    public List<Pessoa> gerarListaContatos(String conversa, String dataFiltro) {
+    public List<Pessoa> gerarListaContatos(String conversa, String dataInicio, String dataFim) {
         List<String> listaMenssagem = processador.extrairConversas(conversa);
-        if (!dataFiltro.isBlank()) {
+        
+        if (!dataInicio.isBlank() && !dataFim.isBlank()) {
             DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate data = LocalDate.parse(dataFiltro, formato);
-            listaMenssagem = processador.filtraConversa(listaMenssagem, data);
+            dataInicio = dataInicio.isBlank()?dataFim:dataInicio;
+            dataFim = dataFim.isBlank()?dataInicio:dataFim;
+            LocalDate dateInicio = LocalDate.parse(dataInicio, formato);
+            LocalDate dateFim = LocalDate.parse(dataFim, formato);            
+            listaMenssagem = processador.filtraConversa(listaMenssagem, dateInicio, dateFim);
         }
+        
         Map<String, Pessoa> mapaContato = processador.estruturaConversas(listaMenssagem);
         List<Pessoa> listaContatos = new ArrayList<>(mapaContato.values());
         return listaContatos;
     }
 
-    /*
-     "Contados", "Interação", "Texto", "Imagens", "Documentos", "Audios", "Vídeos", "Outros"
-     */
-    public Object[][] gerarMapaEstatisticoDeContatos(String conversa, String dataFiltro) {
-        List<Pessoa> listaContatos = this.gerarListaContatos(conversa,dataFiltro);        
+    
+    
+    
+    public Object[][] gerarMapaEstatisticoDeContatos(String conversa, String dataInicio, String dataFim) {
+        List<Pessoa> listaContatos = this.gerarListaContatos(conversa,dataInicio, dataFim);        
         Object[][] matrizDados = UtilControlhe.converteListaContatosEmMapaEstaistico(listaContatos);
         return matrizDados;
     }

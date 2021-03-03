@@ -11,6 +11,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
@@ -30,7 +31,10 @@ public class Main extends javax.swing.JFrame implements IDashboard {
      */
     public Main() {
         initComponents();
-        comboBoxData1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))}));
+        this.setTitle("ClassRoomAnalytics");
+        ComboBoxModel<String> dataHoje = new javax.swing.DefaultComboBoxModel<>(new String[] { LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))});
+        comboBoxDataInicio.setModel(dataHoje);
+        comboBoxDataFinal.setModel(dataHoje);
     }
 
     /**
@@ -45,9 +49,10 @@ public class Main extends javax.swing.JFrame implements IDashboard {
         jScrollPane3 = new javax.swing.JScrollPane();
         tableEstaus = new javax.swing.JTable();
         importaArquivoButton = new javax.swing.JToggleButton();
-        botaoFiltro = new javax.swing.JButton();
-        campoData = new javax.swing.JFormattedTextField();
-        comboBoxData1 = new javax.swing.JComboBox<>();
+        botaoExibirTexto = new javax.swing.JButton();
+        comboBoxDataInicio = new javax.swing.JComboBox<>();
+        comboBoxDataFinal = new javax.swing.JComboBox<>();
+        checkBoxexibirTexto = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -74,27 +79,30 @@ public class Main extends javax.swing.JFrame implements IDashboard {
             }
         });
 
-        botaoFiltro.setText("Filtrar");
-        botaoFiltro.setEnabled(false);
-        botaoFiltro.setFocusable(false);
-        botaoFiltro.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        botaoFiltro.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        botaoFiltro.addActionListener(new java.awt.event.ActionListener() {
+        botaoExibirTexto.setText("Exibir Texto");
+        botaoExibirTexto.setEnabled(false);
+        botaoExibirTexto.setFocusable(false);
+        botaoExibirTexto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        botaoExibirTexto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        botaoExibirTexto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoFiltroActionPerformed(evt);
+                botaoExibirTextoActionPerformed(evt);
             }
         });
 
-        campoData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        campoData.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
-        campoData.setToolTipText("");
-
-        comboBoxData1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        comboBoxData1.addActionListener(new java.awt.event.ActionListener() {
+        comboBoxDataInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboBoxData1ActionPerformed(evt);
+                comboBoxDataInicioActionPerformed(evt);
             }
         });
+
+        comboBoxDataFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboBoxDataFinalActionPerformed(evt);
+            }
+        });
+
+        checkBoxexibirTexto.setText("Exibir Texto");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,28 +112,33 @@ public class Main extends javax.swing.JFrame implements IDashboard {
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(importaArquivoButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(campoData, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(40, 40, 40)
-                        .addComponent(botaoFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(comboBoxData1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(483, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(comboBoxDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(comboBoxDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(importaArquivoButton)
+                            .addGap(18, 18, 18)
+                            .addComponent(checkBoxexibirTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(botaoExibirTexto, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(239, 483, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(importaArquivoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(botaoFiltro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(campoData))
-                    .addComponent(comboBoxData1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(11, 11, 11)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 638, Short.MAX_VALUE)
+                .addGap(36, 36, 36)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(botaoExibirTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(checkBoxexibirTexto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(importaArquivoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(comboBoxDataFinal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboBoxDataInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 635, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -152,18 +165,20 @@ public class Main extends javax.swing.JFrame implements IDashboard {
         }else{
             JOptionPane.showMessageDialog(this, "Nome inválido","Nome inválido", JOptionPane.ERROR_MESSAGE);
         }
-        presenter.atualizarTabelaDeContato("");
+        presenter.atualizarTabelaDeContato();
     }//GEN-LAST:event_importaArquivoButtonActionPerformed
 
-    private void botaoFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltroActionPerformed
-        String data = campoData.getText();
-         presenter.atualizarTabelaDeContato(data);
-    }//GEN-LAST:event_botaoFiltroActionPerformed
+    private void botaoExibirTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExibirTextoActionPerformed
+         presenter.exibirTextoConversa(true);
+    }//GEN-LAST:event_botaoExibirTextoActionPerformed
 
-    private void comboBoxData1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxData1ActionPerformed
-        String data = comboBoxData1.getSelectedItem().toString();
-         presenter.atualizarTabelaDeContato(data);
-    }//GEN-LAST:event_comboBoxData1ActionPerformed
+    private void comboBoxDataInicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxDataInicioActionPerformed
+        this.filtrarConversaPelaData();
+    }//GEN-LAST:event_comboBoxDataInicioActionPerformed
+
+    private void comboBoxDataFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBoxDataFinalActionPerformed
+        this.filtrarConversaPelaData();
+    }//GEN-LAST:event_comboBoxDataFinalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,9 +216,10 @@ public class Main extends javax.swing.JFrame implements IDashboard {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton botaoFiltro;
-    private javax.swing.JFormattedTextField campoData;
-    private javax.swing.JComboBox<String> comboBoxData1;
+    private javax.swing.JButton botaoExibirTexto;
+    private javax.swing.JCheckBox checkBoxexibirTexto;
+    private javax.swing.JComboBox<String> comboBoxDataFinal;
+    private javax.swing.JComboBox<String> comboBoxDataInicio;
     private javax.swing.JToggleButton importaArquivoButton;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableEstaus;
@@ -230,9 +246,20 @@ public class Main extends javax.swing.JFrame implements IDashboard {
     }
 
     @Override
-    public void atualizarBotaoFiltro(String[] datas, boolean enable) {
-        this.botaoFiltro.setEnabled(enable);
-//        this.comboBoxData1.setEnabled(enable);
-        this.comboBoxData1.setModel(new DefaultComboBoxModel<>(datas));
+    public void atualizarBotaoFiltro(String[] datas, boolean ativar) {
+        this.botaoExibirTexto.setEnabled(ativar);
+        this.comboBoxDataInicio.setModel(new DefaultComboBoxModel<>(datas));
+        this.comboBoxDataFinal.setModel(new DefaultComboBoxModel<>(datas));
+    }
+
+    @Override
+    public boolean getEstatusCampoEditor() {
+        return checkBoxexibirTexto.isSelected();
+    }
+    
+    public void filtrarConversaPelaData(){
+        String dataInicio = comboBoxDataInicio.getSelectedItem().toString();
+        String dataFim = comboBoxDataFinal.getSelectedItem().toString();
+        presenter.atualizarTabelaDeContato(dataInicio, dataFim);
     }
 }
